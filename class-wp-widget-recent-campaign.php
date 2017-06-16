@@ -45,15 +45,21 @@ class CampaignRecents extends WP_Widget {
 		echo '<ul>';
 		foreach ( $lastposts as $post ) :
 			setup_postdata ( $post );
+			$datebufferStart = strtotime($post->campaign_date_start);
+			$value_campaign_date_start= date( 'd/m/Y', $datebufferStart);
+			$datebufferEnd= strtotime( $post->campaign_date_end);
+			$value_campaign_date_end = date( 'd/m/Y', $datebufferEnd);
 			?>
+			
 			<li>
-				<i class="fa fa-area-chart"></i><a href='<?php echo  get_post_permalink($post->ID);?>'> <?php echo get_the_title($post->ID); ?></a>&nbsp<a href='<?php echo  '#';?>'><?php ?></a>
+				<i class="fa fa fa-globe"></i><a href='<?php echo  get_post_permalink($post->ID);?>'> <?php echo get_the_title($post->ID); ?></a>&nbsp<a href='<?php echo  '#';?>'><?php ?></a>
+            	<span style='font-size:13px;'>Du <?php echo  $value_campaign_date_start;?> </span>	<span style='font-size:13px;'> au <?php echo  $value_campaign_date_end;?> </span>	
             </li>
 <?php
 		
 endforeach;	?>
 		<li>
-		<a href= <?php echo get_post_type_archive_link( 'campaign'); ?> >Voir tous les comptes rendu</a>
+		<a href= <?php echo get_post_type_archive_link( 'campaign'); ?> >Voir toutes les campagnes</a>
 		</li><?php
 		echo '</ul>';
 		echo $after_widget;

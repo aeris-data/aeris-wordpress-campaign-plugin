@@ -20,10 +20,10 @@ add_filter('single_template','Campaign_single');
 
 function Campaign_init() {
 	$labels = array(
-			'name'               => _x( 'Campaign', 'post type general name', 'your-plugin-textdomain' ),
-			'singular_name'      => _x( 'Campaign', 'post type singular name', 'your-plugin-textdomain' ),
-			'menu_name'          => _x( 'Campaign', 'admin menu', 'your-plugin-textdomain' ),
-			'name_admin_bar'     => _x( 'Campaign', 'add new on admin bar', 'your-plugin-textdomain' ),
+			'name'               => _x( 'Campaigns', 'post type general name', 'your-plugin-textdomain' ),
+			'singular_name'      => _x( 'Campaigns', 'post type singular name', 'your-plugin-textdomain' ),
+			'menu_name'          => _x( 'Campaigns', 'admin menu', 'your-plugin-textdomain' ),
+			'name_admin_bar'     => _x( 'Campaigns', 'add new on admin bar', 'your-plugin-textdomain' ),
 			'add_new'            => _x( 'Add Campaign', 'Campaign', 'your-plugin-textdomain' ),
 			'add_new_item'       => __( ' ' ),
 			'new_item'           => __( 'New Campaign', 'your-plugin-textdomain' ),
@@ -47,7 +47,6 @@ function Campaign_init() {
 	
 	register_post_type('campaign', $args);
 	
-	register_taxonomy_for_object_type( 'category', 'campaign' );
 }
 
 
