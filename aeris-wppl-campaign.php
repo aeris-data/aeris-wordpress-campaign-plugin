@@ -10,7 +10,6 @@ Version: 0.0.2
 add_action('init', 'Campaign_init');
 add_action('admin_init', 'Campaign_add_your_fields_meta_box');
 add_action('save_post', 'Campaign_save');
-//add_action('admin_print_scripts', 'Debriefing_admin_scripts');
 add_filter('archive_template','Campaign_archive');
 add_filter('single_template','Campaign_single');
 
@@ -179,5 +178,3 @@ function Campaign_show_your_fields_meta_box() {
 
 
 ?>
-
-
