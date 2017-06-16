@@ -4,7 +4,7 @@
 
 Plugin Name: Aeris-Campaign
 GitHub Plugin URI: 
-Version: 0.0.1
+Version: 0.0.2
 
 */
 add_action('init', 'Campaign_init');
