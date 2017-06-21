@@ -18,13 +18,8 @@
 			
 		$time = strtotime($value_campaign_date_start);
 		 
-	
-		
-
-		 
-			
-			$this_year =date('Y', $time);// get_the_date('Y');
-			$this_month =  date('m', $time);// get_the_date("m");
+			$this_year =date('Y', $time);
+			$this_month =  date('m', $time);
 			
 			if ($prev_year != $this_year) {
 				echo '</ul>';
