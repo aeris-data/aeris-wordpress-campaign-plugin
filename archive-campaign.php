@@ -5,7 +5,8 @@
 <?php 
 	    echo '<h1>Récapitulatif des campagnes</h1>';
 		$yearly = new WP_Query(array('post_type'=>'campaign', 
-									 
+									 'meta_key' => 'campaign_date_start',
+									 'orderby'   => 'meta_value',
 									 'posts_per_page' => -1));
 
 		$prev_year = null;
@@ -13,11 +14,18 @@
 
 		if( $yearly->have_posts() ) : while( $yearly->have_posts() ) : $yearly->the_post();
 
-			$date = DateTime::createFromFormat("Y-m-d", $post->debriefing_date);
+		$value_campaign_date_start	= get_post_meta( $post->ID, 'campaign_date_start',true );
+			
+		$time = strtotime($value_campaign_date_start);
+		 
+	
+		
 
-
-			$this_year = get_the_date('Y');
-			$this_month = get_the_date("m");
+		 
+			
+			$this_year =date('Y', $time);// get_the_date('Y');
+			$this_month =  date('m', $time);// get_the_date("m");
+			
 			if ($prev_year != $this_year) {
 				echo '</ul>';
 				echo '<h2>' . $this_year.'</h2>';
@@ -33,8 +41,7 @@
 				echo "<h4 style='font-weight:bold;'>".$monthName.'</h4>';
 				echo '<ul>';
 			}
-			$phpdate = strtotime( $post->debriefing_date);
-			$mysqldate = date( 'l d F Y', $phpdate );
+			
 			echo '<li>';
 			echo "<a href='".get_post_permalink($post->ID)."' alt='toto'>".get_the_title($post->ID)." </a>"; 
 			echo '</li>';
