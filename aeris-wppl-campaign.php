@@ -4,7 +4,7 @@
 
 Plugin Name: Aeris-Campaign
 GitHub Plugin URI: https://github.com/aeris-data/aeris-wordpress-campaign-plugin
-Version: 0.0.5
+Version: 0.0.4
 
 */
 
