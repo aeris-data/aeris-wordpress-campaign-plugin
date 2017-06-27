@@ -92,18 +92,15 @@ endforeach;	?>
 		value="<?php echo $title; ?>" />
 	</label>
 </p>
-<p>
+
 <p>
 	<label for="<?php echo $this->get_field_id( 'nb_posts' ); ?>"><?php _e( 'Number of posts to show:' ); ?> 
             	<input style="width: 20%;"
 		id="<?php echo $this->get_field_id( 'nb_posts' ); ?>"
 		name="<?php echo $this->get_field_name( 'nb_posts' ); ?>"
 		type="number" step="1" min="1" value="<?php echo $nb_posts; ?>" /> </label>
-
 </p>
 
-
-</p>
 <?php
 	}
 }

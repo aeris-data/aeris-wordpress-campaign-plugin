@@ -1,9 +1,20 @@
 <?php get_header();?>
 
+<div id="breadcrumbs">
+	<div class="wrapper">
+		<?php if (function_exists('the_breadcrumb')) the_breadcrumb(); ?>
+		<h1 rel="bookmark">
+			Récapitulatif des campagnes
+		</h1>
+	</div>
+</div>
 	<div id="content-area" class="wrapper " >
 		<main id="main" class="site-main" role="main">
+		
 <?php 
-	    echo '<h1>Récapitulatif des campagnes</h1>';
+
+
+	    
 		$yearly = new WP_Query(array('post_type'=>'campaign', 
 									 'meta_key' => 'campaign_date_start',
 									 'orderby'   => 'meta_value',
@@ -22,23 +33,34 @@
 			$this_month =  date('m', $time);
 			
 			if ($prev_year != $this_year) {
-				echo '</ul>';
-				echo '<h2>' . $this_year.'</h2>';
+				if (!is_null($prev_year)) {
+					echo '</ul>';
+					echo '</article>';
+					echo '</section>';
+				}
+				echo '<section role="listCampaign">';
+				echo '<header>';
+				echo '<h2>'. $this_year.'</h2>';
+				echo '</header>';
 				
 			}
 
 			if ($prev_month!= $this_month) {
 				if (!is_null($prev_month)) {
-					echo '</ul>';
+					echo '</article>';
+					
 				}
 				$dateObj   = DateTime::createFromFormat('!m', $this_month);
-				$monthName = $dateObj->format('F'); // March
-				echo "<h4 style='font-weight:bold;'>".$monthName.'</h4>';
+				$monthName = $dateObj->format('F');
+				echo '<article>';
+				echo '<header>';
+				echo '<h3>'.$monthName.'</h3>';
+				echo '</header>';
 				echo '<ul>';
 			}
 			
 			echo '<li>';
-			echo "<a href='".get_post_permalink($post->ID)."' alt='toto'>".get_the_title($post->ID)." </a>"; 
+			echo "<a href='".get_post_permalink($post->ID)."'>".get_the_title($post->ID)." </a>"; 
 			echo '</li>';
 
 			$prev_year = $this_year;
@@ -46,7 +68,9 @@
 			endwhile;
 			
 			echo '</ul>';
+			echo '</section>';
 			endif;?>
+		
 		</main>
 	</div>
 
