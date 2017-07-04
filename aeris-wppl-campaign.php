@@ -4,7 +4,7 @@
 
 Plugin Name: Aeris-Campaign
 GitHub Plugin URI: https://github.com/aeris-data/aeris-wordpress-campaign-plugin
-Version: 0.0.5
+Version: 0.0.6
 
 */
 
@@ -13,7 +13,6 @@ add_action('init', 'Campaign_init');
 add_action('admin_init', 'Campaign_meta_box');
 add_action('save_post', 'Campaign_save');
 add_action('admin_head','Campaign_check_post_type_and_remove_media_buttons');
-
 add_filter('archive_template','Campaign_archive');
 add_filter('single_template','Campaign_single');
 
@@ -159,28 +158,4 @@ add_filter('single_template','Campaign_single');
 	wp_enqueue_script('https://code.jquery.com/jquery-1.12.4.js');
 	wp_enqueue_script('https://code.jquery.com/ui/1.12.1/jquery-ui.js');
 	wp_enqueue_style('jquery-ui-css', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/themes/smoothness/jquery-ui.css');
-
-	
-	
-	
-	function my_admin_menu() {
-		add_submenu_page( 'edit.php?post_type=campaign', 'doc', 'Documentation', 'manage_options', 'team_member_doc', 'create_doc' );
-		
-	}function create_doc() {    global $markdown_content;
-	
-	$markdown_content = file_get_contents(dirname(__FILE__).'/readme.md');
-	//$content_html = Markdown($markdown_content);
-	
-	?>
-    <div class='content'>
-    
-    <?php
-    
-    
-    echo $markdown_content;    
-    ?>
-    </div>
-    <?php
-}
-
 ?>
