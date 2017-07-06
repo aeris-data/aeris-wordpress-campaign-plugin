@@ -4,7 +4,7 @@
 
 Plugin Name: Aeris-Campaign
 GitHub Plugin URI: https://github.com/aeris-data/aeris-wordpress-campaign-plugin
-Version: 0.0.6
+Version: 0.0.7
 
 */
 
@@ -17,45 +17,45 @@ add_filter('archive_template','Campaign_archive');
 add_filter('single_template','Campaign_single');
 
 
-	//Creation du custom post
-	function Campaign_init() {
-		$labels = array(
-				'name'               => _x( 'Campaigns', 'post type general name', 'your-plugin-textdomain' ),
-				'singular_name'      => _x( 'Campaigns', 'post type singular name', 'your-plugin-textdomain' ),
-				'menu_name'          => _x( 'Campaigns', 'admin menu', 'your-plugin-textdomain' ),
-				'name_admin_bar'     => _x( 'Campaigns', 'add new on admin bar', 'your-plugin-textdomain' ),
-				'add_new'            => _x( 'Add Campaign', 'Campaign', 'your-plugin-textdomain' ),
-				'add_new_item'       => __( ' ' ),
-				'new_item'           => __( 'New Campaign', 'your-plugin-textdomain' ),
-				'edit_item'          => __( 'Edit Campaign', 'your-plugin-textdomain' ),
-				'view_item'          => __( 'View Campaign', 'your-plugin-textdomain' ),
-				'all_items'          => __( 'All Campaign', 'your-plugin-textdomain' ),
-				'search_items'       => __( 'Search Campaign', 'your-plugin-textdomain' ),
-				'not_found'          => __( 'No Campaign found.', 'your-plugin-textdomain' ),
-				'not_found_in_trash' => __( 'No Campaign found in Trash.', 'your-plugin-textdomain' )
-		);
-		
-		$args = array(
-				'labels'             => $labels,
-				'public'             => true,
-				'has_archive' 		 => true,
-				'menu_icon'   		 => 'dashicons-admin-site',
-				'capability_type'    => 'post',
-				'menu_position'      => 4,
-				'supports'           => array( 'title')
-		);
-		
-		register_post_type('campaign', $args);
-		
-	}
+//Creation du custom post
+function Campaign_init() {
+	$labels = array(
+			'name'               => _x( 'Campaigns', 'post type general name', 'your-plugin-textdomain' ),
+			'singular_name'      => _x( 'Campaigns', 'post type singular name', 'your-plugin-textdomain' ),
+			'menu_name'          => _x( 'Campaigns', 'admin menu', 'your-plugin-textdomain' ),
+			'name_admin_bar'     => _x( 'Campaigns', 'add new on admin bar', 'your-plugin-textdomain' ),
+			'add_new'            => _x( 'Add Campaign', 'Campaign', 'your-plugin-textdomain' ),
+			'add_new_item'       => __( ' ' ),
+			'new_item'           => __( 'New Campaign', 'your-plugin-textdomain' ),
+			'edit_item'          => __( 'Edit Campaign', 'your-plugin-textdomain' ),
+			'view_item'          => __( 'View Campaign', 'your-plugin-textdomain' ),
+			'all_items'          => __( 'All Campaign', 'your-plugin-textdomain' ),
+			'search_items'       => __( 'Search Campaign', 'your-plugin-textdomain' ),
+			'not_found'          => __( 'No Campaign found.', 'your-plugin-textdomain' ),
+			'not_found_in_trash' => __( 'No Campaign found in Trash.', 'your-plugin-textdomain' )
+	);
+	
+	$args = array(
+			'labels'             => $labels,
+			'public'             => true,
+			'has_archive' 		 => true,
+			'menu_icon'   		 => 'dashicons-admin-site',
+			'capability_type'    => 'post',
+			'menu_position'      => 4,
+			'supports'           => array( 'title')
+	);
+	
+	register_post_type('campaign', $args);
+	
+}
 
-	// Création de la métabox
-	function Campaign_meta_box() {
-		add_meta_box('campaign_meta', "Création d'une campagne", 'Campaign_fields_meta_box','campaign');
-	}
+// Création de la métabox
+function Campaign_meta_box() {
+	add_meta_box('campaign_meta', "Création d'une campagne", 'Campaign_fields_meta_box','campaign');
+}
 
-	//Création des custom field de  la méta box
-	function Campaign_fields_meta_box() {
+//Création des custom field de  la méta box
+function Campaign_fields_meta_box() {
 	
 	global $post;
 	

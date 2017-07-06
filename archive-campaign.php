@@ -38,7 +38,7 @@
 					echo '</article>';
 					echo '</section>';
 				}
-				echo '<section role="listCampaign">';
+				echo '<section role="listProgram">';
 				echo '<header>';
 				echo '<h2>'. $this_year.'</h2>';
 				echo '</header>';
